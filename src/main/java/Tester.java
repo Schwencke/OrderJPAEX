@@ -5,6 +5,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import java.util.List;
+
 import static facade.EntityManager.getEntityManager;
 
 public class Tester {
@@ -23,5 +25,9 @@ public class Tester {
 
         System.out.println(dataFacade.getCustomer(1).getName());
         System.out.println(dataFacade.getCustomer(2).getName());
+        List<Customer> customerList = dataFacade.getAllCustomers();
+        customerList.forEach(customer -> {
+            System.out.println(customer.getName());
+        });
     }
 }

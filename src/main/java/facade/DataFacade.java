@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import java.util.List;
+
 import static facade.EntityManager.getEntityManager;
 
 public class DataFacade {
@@ -27,9 +29,10 @@ public class DataFacade {
         return (Customer) q.getSingleResult();
     }
 
-//    public Customer getAllCustomers() {
-//        return null;
-//    }
+    public List<Customer> getAllCustomers() {
+        Query q = em.createNamedQuery("Customer.findAllCustomers");
+        return (List<Customer>) q.getResultList();
+    }
 //
 //    public void createItemType() {
 //

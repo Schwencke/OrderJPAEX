@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Table(name = "customer")
 @Entity
 @NamedQuery(name = "Customer.findCustomerById", query = "select c FROM Customer c WHERE c.id=:customerId")
+@NamedQuery(name = "Customer.findAllCustomers", query = "select c FROM Customer c")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
