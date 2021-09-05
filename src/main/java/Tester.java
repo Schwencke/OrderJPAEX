@@ -1,5 +1,7 @@
 import entitys.Customer;
 import entitys.ItemType;
+import entitys.Order;
+import entitys.OrderLine;
 import facade.DataFacade;
 
 import javax.persistence.EntityManager;
@@ -20,28 +22,22 @@ public class Tester {
         Customer q2 = new Customer("Palle Pop", "PillePopPalle@hotmail.com");
         ItemType it1 = new ItemType("Søm", "Søm er godt", 299);
         ItemType it2 = new ItemType("Skruer", "Skruer er sejere end søm", 399);
+        OrderLine ol = new OrderLine(100);
         EntityManager em = getEntityManager();
+
+        Order order = new Order();
+        ol.setItemType(it1);
+        order.addOrderLine(ol);
+        order.setCustomer(q1);
+
         em.getTransaction().begin();
         em.persist(q1);
         em.getTransaction().commit();
 
-        System.out.println(dataFacade.getCustomer(1).getName());
-
         dataFacade.createCustomer(q2);
-
-        List<Customer> customerList = dataFacade.getAllCustomers();
-
-        customerList.forEach(customer -> {
-            System.out.println(customer.getName());
-        });
-
         dataFacade.createItemType(it1);
         dataFacade.createItemType(it2);
 
-        ItemType itemType = dataFacade.getItemType(1);
-        System.out.println(itemType.getName());
-        System.out.println(itemType.getDescription());
-        System.out.println(itemType.getPrice());
 
     }
 }

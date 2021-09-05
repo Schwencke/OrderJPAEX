@@ -1,6 +1,8 @@
 package entitys;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "customer")
 @Entity
@@ -13,6 +15,8 @@ public class Customer {
     private Integer id;
     private String name;
     private String email;
+    @OneToMany (mappedBy = "customer", cascade = CascadeType.PERSIST)
+    private List<Order> orderList;
 
     public Customer() {
     }
@@ -20,12 +24,18 @@ public class Customer {
     public Customer(String name, String email) {
         this.name = name;
         this.email = email;
+        this.orderList = new ArrayList<>();
     }
 
-    public Customer(Integer id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void addOrder(Order order){
+        this.orderList.add(order);
+        if(order != null ){
+            order.setCustomer(this);
+        }
     }
 
     public Integer getId() {
