@@ -16,7 +16,7 @@ public class Customer {
     private String name;
     private String email;
     @OneToMany (mappedBy = "customer", cascade = CascadeType.PERSIST)
-    private List<Order> orderList;
+    private List<Orders> ordersList;
 
     public Customer() {
     }
@@ -24,17 +24,17 @@ public class Customer {
     public Customer(String name, String email) {
         this.name = name;
         this.email = email;
-        this.orderList = new ArrayList<>();
+        this.ordersList = new ArrayList<>();
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
+    public List<Orders> getOrderList() {
+        return ordersList;
     }
 
-    public void addOrder(Order order){
-        this.orderList.add(order);
-        if(order != null ){
-            order.setCustomer(this);
+    public void addOrder(Orders orders){
+        this.ordersList.add(orders);
+        if(orders != null ){
+            orders.setCustomer(this);
         }
     }
 

@@ -1,14 +1,10 @@
 import entitys.Customer;
 import entitys.ItemType;
-import entitys.Order;
+import entitys.Orders;
 import entitys.OrderLine;
 import facade.DataFacade;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import java.util.List;
 
 import static facade.EntityManager.getEntityManager;
 
@@ -25,10 +21,10 @@ public class Tester {
         OrderLine ol = new OrderLine(100);
         EntityManager em = getEntityManager();
 
-        Order order = new Order();
+        Orders orders = new Orders();
         ol.setItemType(it1);
-        order.addOrderLine(ol);
-        order.setCustomer(q1);
+        orders.addOrderLine(ol);
+        orders.setCustomer(q1);
 
         em.getTransaction().begin();
         em.persist(q1);

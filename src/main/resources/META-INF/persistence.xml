@@ -6,7 +6,7 @@
     <persistence-unit name="pu">
         <class>entitys.Customer</class>
         <class>entitys.ItemType</class>
-        <class>entitys.Order</class>
+        <class>entitys.Orders</class>
         <class>entitys.OrderLine</class>
 
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>

@@ -16,19 +16,19 @@ public class OrderLine {
     ItemType itemType;
     @ManyToOne
     @JoinColumn(name = "order_id")
-    Order order;
+    Orders orders;
 
     public OrderLine() {
     }
 
     public OrderLine(int quantity) {
         this.quantity = quantity;
-        order = new Order();
+        orders = new Orders();
         itemType = new ItemType();
     }
 
-    public Order getOrder() {
-        return order;
+    public Orders getOrder() {
+        return orders;
     }
 
     public ItemType getItemType() {
@@ -39,8 +39,8 @@ public class OrderLine {
         this.itemType = itemType;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrder(Orders orders) {
+        this.orders = orders;
     }
 
     public Integer getId() {

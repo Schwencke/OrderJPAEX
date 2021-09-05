@@ -4,25 +4,25 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table(name = "order")
+@Table(name = "orders")
 @Entity
-public class Order {
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id", nullable = false)
     private Integer orderId;
     @ManyToOne
     Customer customer;
-    @OneToMany (mappedBy = "order", cascade = CascadeType.PERSIST)
+    @OneToMany (mappedBy = "orders", cascade = CascadeType.PERSIST)
     List<OrderLine> orderLineList;
 
 
-    public Order() {
+    public Orders() {
         this.customer = new Customer();
         orderLineList = new ArrayList<>();
     }
 
-    public Order(Integer orderId) {
+    public Orders(Integer orderId) {
         this.orderId = orderId;
         this.customer = new Customer();
         orderLineList = new ArrayList<>();
