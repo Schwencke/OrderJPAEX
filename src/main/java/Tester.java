@@ -21,18 +21,25 @@ public class Tester {
         OrderLine ol = new OrderLine(100);
         EntityManager em = getEntityManager();
 
+        dataFacade.createCustomer(q2);
+        dataFacade.createItemType(it1);
+        dataFacade.createItemType(it2);
+
         Orders orders = new Orders();
         ol.setItemType(it1);
         orders.addOrderLine(ol);
         orders.setCustomer(q1);
 
-        em.getTransaction().begin();
-        em.persist(q1);
-        em.getTransaction().commit();
-
         dataFacade.createCustomer(q2);
         dataFacade.createItemType(it1);
         dataFacade.createItemType(it2);
+
+        em.getTransaction().begin();
+        em.persist(q1);
+        em.persist(orders);
+        em.getTransaction().commit();
+
+
 
 
     }

@@ -18,13 +18,11 @@ public class Orders {
 
 
     public Orders() {
-        this.customer = new Customer();
         orderLineList = new ArrayList<>();
     }
 
     public Orders(Integer orderId) {
         this.orderId = orderId;
-        this.customer = new Customer();
         orderLineList = new ArrayList<>();
 
     }
