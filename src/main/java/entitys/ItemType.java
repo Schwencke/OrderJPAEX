@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Table(name = "item_type")
 @Entity
+@NamedQuery(name = "ItemType.findAllItemTypesById", query = "SELECT i FROM ItemType i where i.id=:itemId")
 public class ItemType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

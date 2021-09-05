@@ -5,6 +5,7 @@
              version="2.2">
     <persistence-unit name="pu">
         <class>entitys.Customer</class>
+        <class>entitys.ItemType</class>
 
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <properties>
