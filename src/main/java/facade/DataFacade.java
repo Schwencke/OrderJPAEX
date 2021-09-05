@@ -10,14 +10,19 @@ import javax.persistence.TypedQuery;
 import static facade.EntityManager.getEntityManager;
 
 public class DataFacade {
+    EntityManager em = getEntityManager();
 
+    public void createCustomer(String name, String email) {
+        Customer customer = new Customer(name, email);
+        em.getTransaction().begin();
+        em.persist(customer);
+        em.getTransaction().commit();
 
-    public void createCustomer() {
 
     }
 
     public Customer getCustomer(int customerId) {
-        Query q = getEntityManager().createNamedQuery("Customer.findCustomerById");
+        Query q = em.createNamedQuery("Customer.findCustomerById");
         q.setParameter("customerId", customerId);
         return (Customer) q.getSingleResult();
     }
