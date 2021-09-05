@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Table(name = "customer")
 @Entity
+@NamedQuery(name = "Customer.findCustomerById", query = "select c FROM Customer c WHERE c.id=:customerId")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +14,11 @@ public class Customer {
     private String email;
 
     public Customer() {
+    }
+
+    public Customer(String name, String email) {
+        this.name = name;
+        this.email = email;
     }
 
     public Customer(Integer id, String name, String email) {
