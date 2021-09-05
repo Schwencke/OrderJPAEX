@@ -32,8 +32,7 @@ public class Order {
     public void addOrderLine(OrderLine orderList){
         this.orderLineList.add(orderList);
         if (orderList != null){
-            orderList.getOrder().addOrderLine(orderList);
-
+            orderList.setOrder(this);
         }
     }
 

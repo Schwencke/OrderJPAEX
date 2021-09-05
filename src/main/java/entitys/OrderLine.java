@@ -9,10 +9,13 @@ public class OrderLine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
+    @Column(name = "quantity", nullable = false)
     private int quantity;
     @ManyToOne
+    @JoinColumn(name = "itemtype_id")
     ItemType itemType;
     @ManyToOne
+    @JoinColumn(name = "order_id")
     Order order;
 
     public OrderLine() {
