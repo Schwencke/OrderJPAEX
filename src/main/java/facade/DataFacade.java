@@ -81,7 +81,6 @@ public class DataFacade {
 
     public int totalCostOfOrder(int orderId) {
         TypedQuery<OrderPriceDTO> query = getEntityManager().createQuery("select new dto.OrderPriceDTO(i.price,l.quantity,o.orderId,o.customer.id,l.id) FROM Orders o, ItemType i JOIN o.orderLineList l", dto.OrderPriceDTO.class);
-      //"select new dto.OrderPriceDTO(l.quantity,o.orderId,o.customer.id,l.id) FROM Orders o INNER JOIN o.orderLineList l INNER JOIN ", dto.OrderPriceDTO.class);
         List<OrderPriceDTO> orderLineList = query.getResultList();
         AtomicReference<Integer> total = new AtomicReference<>(0);
         orderLineList.forEach(orderPriceDTO -> {
